@@ -17,20 +17,30 @@ class Monopoly
   100.times do
     dice.roll!
 
-    player.tile += dice.total
+    player.advance(dice.total) do |tile|
+      if tile.name == "Go"
+        player.receive_funds(200)
+        puts "#{player.name} passes Go and receives 200"
+      end
+    end
 
     tile = player.tile
 
     puts "#{player.name} moves #{dice.total} to #{tile.name}"
 
     begin
-      if tile.buyable? && tile.available?
-        player.buy(tile)
-
-        puts "#{player.name} buys #{tile.name}"
+      if tile.buyable?
+        if tile.available?
+          player.buy tile
+          puts "#{player.name} buys #{tile.name}; new balance #{player.balance}"
+        else
+          unless tile.owner == player
+            player.pay_rent tile
+            puts "#{player.name} pays #{tile.owner.name} #{tile.calculate_rent} for rent on #{tile.name}"
+          end
+        end
       end
 
-      if tile.
     rescue Exception
       puts Exception
     end
@@ -101,7 +111,7 @@ game.land_set :yellow, "Yellow"
 game.property "Leicester Square", 260, 22, :yellow
 game.property "Coventry Street", 260, 22, :yellow
 game.tile "Water Works"
-game.property "Piccadily", 280, 24, :orange
+game.property "Piccadily", 280, 24, :yellow
 
 
 game.tile "Go To Jail"
@@ -112,7 +122,7 @@ game.land_set :green, "Green"
 game.property "Regent Street", 300, 26, :green
 game.property "Oxford Street", 300, 26, :green
 game.tile "Community Chest"
-game.property "Bond Street", 320, 28, :red
+game.property "Bond Street", 320, 28, :green
 
 game.station "Liverpool Street Station"
 game.tile "Chance"

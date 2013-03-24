@@ -14,6 +14,7 @@ class Tile
     @next = tile
   end
 
+
   def +(value)
     tile = self
     value = value.to_i

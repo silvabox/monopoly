@@ -36,6 +36,28 @@ class Player
     @land << land
   end
 
+  def pay_rent(land)
+    rent = land.calculate_rent
+
+    raise "Insufficient funds to pay rent" if @balance  < rent
+
+    @balance -= rent
+    land.owner.receive_funds rent
+    @balance -= rent
+  end
+
+  def receive_funds(funds)
+    @balance += funds
+  end
+
+  def advance(places)
+    places.times do
+      @tile = @tile.next
+      yield(@tile) if block_given?
+    end
+    @tile
+  end
+
   def to_s
     "Player #{@name}"
   end
