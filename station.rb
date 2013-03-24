@@ -1,12 +1,12 @@
-require "./land.rb"
-require "./land_set.rb"
+require_relative "./land.rb"
+require_relative "./land_group.rb"
 
 class Station < Land
 
-  @@station_set = LandSet.new("Stations")
+  @@stations = LandGroup.new("Stations")
 
   def initialize(name)
-    super(name, 200, 50, @@station_set)
+    super(name, 200, 50, @@stations)
   end
 
   def calculate_rent

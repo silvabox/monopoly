@@ -1,7 +1,7 @@
-require "./property.rb"
-require "./station.rb"
-require "./land_set.rb"
-require "./player.rb"
+require_relative "./property.rb"
+require_relative "./station.rb"
+require_relative "./land_group.rb"
+require_relative "./player.rb"
 
 class Game
   def initialize
@@ -10,8 +10,8 @@ class Game
     @sets = {}
   end
 
-  def land_set(key, value)
-    @sets[key] = LandSet.new(value)
+  def land_group(key, value)
+    @sets[key] = LandGroup.new(value)
   end
 
   def tile(name)

@@ -1,4 +1,4 @@
-require "./land.rb"
+require_relative "./land.rb"
 
 class Player
   attr_reader :name, :balance, :land, :next
@@ -18,11 +18,11 @@ class Player
     @balance = balance
   end
 
-  def owns_complete_set?(land)
+  def owns_complete_group?(land)
     land_owned_in_set(land).count == land.set.count
   end
 
-  def land_owned_in_set(land)
+  def land_owned_in_group(land)
     land.set.land_owned_by(self)
   end
 

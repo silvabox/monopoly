@@ -1,16 +1,16 @@
-require "./tile.rb"
+require_relative "./tile.rb"
 
 class Land < Tile
-  attr_reader :purchase_value, :rent_value, :set
+  attr_reader :purchase_value, :rent_value, :group
   attr_accessor :owner
 
-  def initialize(name, purchase_value, rent_value, set)
+  def initialize(name, purchase_value, rent_value, group)
     super(name)
     @buyable = true
     @purchase_value = purchase_value
     @rent_value = rent_value
-    @set = set
-    @set.add self
+    @group = group
+    @group.add self
 
   end
 
