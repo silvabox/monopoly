@@ -19,11 +19,11 @@ class Player
   end
 
   def owns_complete_group?(land)
-    land_owned_in_set(land).count == land.set.count
+    land_owned_in_group(land).count == land.group.count
   end
 
   def land_owned_in_group(land)
-    land.set.land_owned_by(self)
+    land.group.land_owned_by(self)
   end
 
   def buy(land)
