@@ -2,6 +2,12 @@ require_relative './board.rb'
 
 class LondonBoard < Board
 
+def initialize
+    super(Tile.new("Go"))
+end
+
+protected
+
   def build
     land_group :brown, "Brown"
 

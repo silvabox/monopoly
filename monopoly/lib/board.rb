@@ -1,9 +1,8 @@
 require_relative "./game.rb"
-require_relative "./go.rb"
 
 class Board
 
-  def go
+  def start_tile
     @tiles[0]
   end
 
@@ -13,16 +12,18 @@ class Board
 
   protected
 
-  def initialize()
-    @tiles = [Go.new]
+  def initialize(start_tile)
+    @tiles = [start_tile]
     @groups = {}
     self.build
   end
 
+# this method is called in the constructor and overriden in sub classes to build the board
   def build
 
   end
 
+# the following are convenience methods to helo build a board using 'DSL'
   def land_group(key, value)
     group = LandGroup.new(value)
     @groups[key] = group
@@ -47,6 +48,8 @@ class Board
     add_tile(station)
     station
   end
+
+private
 
   def add_tile(tile)
     unless @tiles.empty?

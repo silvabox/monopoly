@@ -16,7 +16,6 @@ class BoardTest < MiniTest::Unit::TestCase
     assert tile.name == "King's Cross Station"
   end
 
-
   def test_picadilly
     tile = advance(@board.go, 29)
     assert tile.name == "Piccadilly"

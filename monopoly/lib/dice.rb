@@ -6,7 +6,7 @@ class Dice
   end
 
   def roll!
-    @roll = Array.new(@no_of_dice) { @rand.rand(1..6) }
+    @roll = roll
   end
 
   def total
@@ -30,5 +30,12 @@ class Dice
     roll!
     total
   end
+
+  private
+
+  def roll
+    Array.new(@no_of_dice) { @rand.rand(1..6) }
+  end
+
 
 end

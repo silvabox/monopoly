@@ -1,5 +1,4 @@
 require_relative "./dice.rb"
-require_relative "./go.rb"
 require_relative "./property.rb"
 require_relative "./station.rb"
 require_relative "./land_group.rb"

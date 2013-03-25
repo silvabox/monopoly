@@ -13,15 +13,4 @@ class Tile
   def next=(tile)
     @next = tile
   end
-
-
-  def +(value)
-    tile = self
-    value = value.to_i
-
-    value.times do
-      tile = tile.next
-    end
-    tile
-  end
 end

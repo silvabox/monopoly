@@ -11,7 +11,6 @@ class Land < Tile
     @rent_value = rent_value
     @group = group
     @group.add self
-
   end
 
   def calculate_rent

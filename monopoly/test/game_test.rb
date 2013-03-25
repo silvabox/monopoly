@@ -1,6 +1,5 @@
 require 'minitest/autorun'
-require '../game.rb'
-require '../go.rb'
+require '../lib/game.rb'
 
 class GameTest < MiniTest::Unit::TestCase
 

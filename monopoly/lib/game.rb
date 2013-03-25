@@ -10,7 +10,7 @@ class Game
     raise "Cannot add players to an empty board (no tiles)" unless @board
     player = Player.new(name)
     player.initialize_balance(initial_balance)
-    player.tile = @board.go
+    player.tile = @board.start_tile
     add_player player
     player
   end
