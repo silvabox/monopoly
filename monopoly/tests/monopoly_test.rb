@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require '../monopoly.rb'
 
-class TestMonopoly
+class MonopolyTest
 
   def test_run
 

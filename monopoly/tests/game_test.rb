@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require '../game.rb'
 require '../go.rb'
 
-class TestGame < MiniTest::Unit::TestCase
+class GameTest < MiniTest::Unit::TestCase
 
   def setup
     @game = Game.new(Go.new)
