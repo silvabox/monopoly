@@ -1,5 +1,6 @@
 class Tile
-  attr_reader :name, :next
+  attr_reader :name
+  attr_accessor :next
 
   def initialize(name)
       @name = name
@@ -8,9 +9,5 @@ class Tile
 
   def buyable?
     @buyable
-  end
-
-  def next=(tile)
-    @next = tile
   end
 end
