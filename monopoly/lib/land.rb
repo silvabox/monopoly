@@ -6,10 +6,8 @@ class Land < Tile
 
   def initialize(name, purchase_value, rent_value, group)
     super(name)
-    @buyable = true
-    @purchase_value = purchase_value
-    @rent_value = rent_value
-    @group = group
+    @buyable, @purchase_value = true, purchase_value
+    @rent_value, @group = rent_value, group
     @group.add self
   end
 
