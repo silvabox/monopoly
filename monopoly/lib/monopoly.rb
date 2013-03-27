@@ -1,10 +1,10 @@
-require_relative "./dice.rb"
-require_relative "./property.rb"
-require_relative "./station.rb"
-require_relative "./land_group.rb"
-require_relative "./player.rb"
-require_relative "./game.rb"
-require_relative "./london_board.rb"
+require "./lib/dice.rb"
+require "./lib/property.rb"
+require "./lib/station.rb"
+require "./lib/land_group.rb"
+require "./lib/player.rb"
+require "./lib/game.rb"
+require "./lib/london_board.rb"
 
 class Monopoly
 

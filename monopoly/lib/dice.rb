@@ -1,7 +1,7 @@
 class Dice
   def initialize(no_of_dice)
     @no_of_dice = no_of_dice
-    @rand = Random.new()
+    @rand = Random.new
     self.roll!
   end
 
@@ -10,20 +10,12 @@ class Dice
   end
 
   def total
-    total = 0
-    @roll.each { |value| total += value }
-    total
+    @roll.inject(0) {|sum, x| sum + x }
   end
 
   def double?
     return false if @no_of_dice < 2
-
-    values = []
-    @roll.each do |value|
-      return true if values.include?(value)
-      values << value
-    end
-    false
+    @roll.uniq.count == 1
   end
 
   def new_total!

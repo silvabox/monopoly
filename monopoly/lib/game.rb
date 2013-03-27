@@ -1,5 +1,3 @@
-require_relative "./player.rb"
-
 class Game
   def initialize(board)
     @board = board

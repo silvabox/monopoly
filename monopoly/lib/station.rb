@@ -1,6 +1,3 @@
-require_relative "./land.rb"
-require_relative "./land_group.rb"
-
 class Station < Land
 
   @@stations = LandGroup.new("Stations")

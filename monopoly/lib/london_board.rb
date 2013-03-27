@@ -1,5 +1,3 @@
-require_relative './board.rb'
-
 class LondonBoard < Board
 
 def initialize

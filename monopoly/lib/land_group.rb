@@ -2,18 +2,24 @@ class LandGroup
   attr_reader :name, :land
 
   include Enumerable
+  # extend Forwardable
+  # def_delegators :@land, :each, :<<
 
   def initialize(name)
     @name = name
     @land = []
   end
 
-  def add(land)
+  def <<(land)
     @land << land
   end
 
   def each
-    @land.each { |x| yield x }
+    if block_given?
+      @land.each {|x| yield x }
+    else
+      @land.each
+    end
   end
 
   def land_owned_by(owner)

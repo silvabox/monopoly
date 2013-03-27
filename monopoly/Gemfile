@@ -4,3 +4,5 @@ gem 'minitest'
 gem 'guard'
 gem 'guard-minitest'
 gem 'rb-fsevent', :require => false
+gem 'mocha'
+gem 'terminal-notifier-guard'
