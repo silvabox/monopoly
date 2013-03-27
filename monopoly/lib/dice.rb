@@ -7,8 +7,13 @@ class Dice
 
   def roll!
     @roll = roll
+    self
   end
 
+  def outcome
+    @no_of_dice == 1 ? @roll.first : @roll
+  end
+  
   def total
     @roll.inject(0) {|sum, x| sum + x }
   end
@@ -16,11 +21,6 @@ class Dice
   def double?
     return false if @no_of_dice < 2
     @roll.uniq.count == 1
-  end
-
-  def new_total!
-    roll!
-    total
   end
 
   private
