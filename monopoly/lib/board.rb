@@ -1,5 +1,3 @@
-require_relative "./game.rb"
-
 class Board
 
   def start_tile

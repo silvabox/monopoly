@@ -1,5 +1,3 @@
-require_relative "./land.rb"
-
 class Property < Land
   def initialize(name, purchase_value, rent_value, group)
     super(name, purchase_value, rent_value, group)

@@ -1,5 +1,3 @@
-require_relative "./land.rb"
-
 class Player
   attr_reader :name, :balance, :land, :next
   attr_accessor :tile

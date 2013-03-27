@@ -1,4 +1,4 @@
-class TileSet
+class TileGroup
   attr_reader :name, :tiles
 
   def initialize(name, tiles)
