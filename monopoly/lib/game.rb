@@ -5,7 +5,6 @@ class Game
   end
 
   def player(name, initial_balance)
-    raise "Cannot add players to an empty board (no tiles)" unless @board
     player = Player.new(name)
     player.initialize_balance(initial_balance)
     player.tile = @board.start_tile

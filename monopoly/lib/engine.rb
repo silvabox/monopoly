@@ -1,8 +1,9 @@
 class Engine
-  
+
   def self.run(game)
 
     winner=false
+
     dice = Dice.new(2)
 
     player = game.first_player

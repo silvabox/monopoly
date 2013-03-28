@@ -10,7 +10,6 @@ require "./lib/player.rb"
 require "./lib/game.rb"
 require "./lib/engine.rb"
 
-
 game = Game.new(LondonBoard.new)
 
 game.player "Ben", 1500

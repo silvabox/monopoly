@@ -6,7 +6,7 @@ class Land < Tile
     super(name)
     @buyable, @purchase_value = true, purchase_value
     @rent_value, @group = rent_value, group
-    @group.add self
+    @group << self
   end
 
   def calculate_rent
