@@ -10,20 +10,22 @@ class Board
 
   protected
 
-  def initialize(start_tile)
-    @tiles = [start_tile]
+  def initialize(start_tile_name)
+    @tiles = []
+    tile start_tile_name
     @groups = {}
+    land_group :stations, "Stations"
     self.build
   end
-
+  
 # this method is called in the constructor and overriden in sub classes to build the board
   def build
 
   end
 
-# the following are convenience methods to helo build a board using 'DSL'
-  def land_group(key, value)
-    group = LandGroup.new(value)
+# the following are convenience methods to help build a board using 'DSL'
+  def land_group(key, name)
+    group = LandGroup.new(name)
     @groups[key] = group
     group
   end
@@ -42,10 +44,11 @@ class Board
   end
 
   def station(name)
-    station = Station.new(name)
+    station = Station.new(name, @groups[:stations])
     add_tile(station)
     station
   end
+
 
 private
 

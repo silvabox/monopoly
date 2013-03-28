@@ -1,5 +1,3 @@
-require_relative "./tile.rb"
-
 class Land < Tile
   attr_reader :purchase_value, :rent_value, :group
   attr_accessor :owner

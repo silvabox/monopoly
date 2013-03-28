@@ -24,10 +24,14 @@ class Player
     land.group.land_owned_by(self)
   end
 
+  def can_afford?(value)
+    @balance >= value
+  end
+
   def buy(land)
     raise "This land cannot be bought" unless land.buyable?
     raise "This land is already owned" if land.owner
-    raise "Insufficient funds to buy land" if @balance  < land.purchase_value
+    raise "Insufficient funds to buy land" unless can_afford? land.purchase_value
 
     @balance -= land.purchase_value
     land.owner = self
@@ -37,11 +41,10 @@ class Player
   def pay_rent(land)
     rent = land.calculate_rent
 
-    raise "Insufficient funds to pay rent" if @balance  < rent
+    raise "Insufficient funds to pay rent" unless can_afford? rent
 
     @balance -= rent
     land.owner.receive_funds rent
-    @balance -= rent
   end
 
   def receive_funds(funds)

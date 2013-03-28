@@ -1,7 +1,7 @@
 class LondonBoard < Board
 
 def initialize
-    super(Tile.new("Go"))
+    super("Go")
 end
 
 protected
