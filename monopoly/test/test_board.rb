@@ -1,9 +1,5 @@
 class TestBoard < Board
 
-def initialize
-    super(Tile.new("Go"))
-end
-
 protected
 
   def build

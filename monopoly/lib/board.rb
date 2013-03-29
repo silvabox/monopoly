@@ -1,5 +1,8 @@
 class Board
 
+  START_TILE_NAME = "Go"
+  STATIONS_GROUP_NAME = "Stations"
+
   def start_tile
     @tiles[0]
   end
@@ -10,11 +13,11 @@ class Board
 
   protected
 
-  def initialize(start_tile_name)
+  def initialize()
     @tiles = []
-    tile start_tile_name
+    tile START_TILE_NAME
     @groups = {}
-    land_group :stations, "Stations"
+    land_group :stations, STATIONS_GROUP_NAME
     self.build
   end
   

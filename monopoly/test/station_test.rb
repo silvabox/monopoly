@@ -2,55 +2,60 @@ require 'minitest/autorun'
 require './lib/tile.rb'
 require './lib/land.rb'
 require './lib/land_group.rb'
+require './lib/station.rb'
+
 
 class StationTest < MiniTest::Unit::TestCase
+
 	def setup
-    @stations = LandGroup.new()
+    @stations = LandGroup.new("Stations")
   end
 
   def test_name_when_initialized
-    station = add_stations(1)
-    assert_equal "Station 1", station
+    assert_equal "Station 1", new_station(1).name
   end
 
   def test_purchase_value_when_initialized
-    station = add_stations(1)
-    assert_equal station::PURCHASE_VALUE, station.purchase_value
+    assert_equal Station::PURCHASE_VALUE, new_station(1).purchase_value
   end
 
 
   def test_rent_value_when_initialized
-    station = add_stations(1)
-    assert_equal station::RENT_VALUE, station.rent_value
+    assert_equal Station::RENT_VALUE, new_station(1).rent_value
   end
 
-  def test_calculate_rent_one_station
-    station = add_stations(1)
-    assert_equal station::RENT_VALUE_ONE_STATION, station.rent_value
+  def test_calculate_rent_one_station_owned
+    assert_equal Station::RENT_VALUE_ONE_OWNED, add_stations(1)[0].calculate_rent
   end
 
-  def test_calculate_rent_two_stations
-    station = add_stations(2)
-    assert_equal station::RENT_VALUE_TWO_STATION, station.rent_value
+  def test_calculate_rent_two_stations_owned
+    stations = add_stations(2)
+    assert_equal Station::RENT_VALUE_TWO_OWNED, stations[0].calculate_rent
   end
 
-  def test_calculate_rent_three_station
-    station = add_stations(3)
-    assert_equal station::RENT_VALUE_THREE_STATION, station.rent_value
+  def test_calculate_rent_three_stations_owned
+    stations = add_stations(3)
+    assert_equal Station::RENT_VALUE_THREE_OWNED, stations[0].calculate_rent
   end
 
-  def test_calculate_rent_four_station
-    station = add_stations(4)
-    assert_equal station::RENT_VALUE_FOUR_STATION, station.rent_value
+  def test_calculate_rent_four_stations_owned
+    stations = add_stations(4)
+    assert_equal Station::RENT_VALUE_FOUR_OWNED, stations[0].calculate_rent
   end
 
   private
 
-  def add_stations(no_of_stations)
+  def add_stations(no_of_owned)
     stations = []
-    no_of_stations.times do |i|
-      stations << Station.new("Station #{i}", @stations)     
+    4.times do |i|
+      station = new_station(i + 1)
+      station.owner = "Owner" if no_of_owned > i 
+      stations << station
     end
-    no_of_stations > 1 ? stations : stations[1] 
+    stations
+  end
+
+  def new_station(index)
+    Station.new("Station #{index}", @stations)
   end
 end

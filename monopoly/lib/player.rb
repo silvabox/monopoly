@@ -17,7 +17,7 @@ class Player
   end
 
   def owns_complete_group?(land)
-    land_owned_in_group(land).count == land.group.count
+    land_owned_in_group(land).count == land.group.land.count
   end
 
   def land_owned_in_group(land)

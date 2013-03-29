@@ -1,9 +1,5 @@
 class LondonBoard < Board
 
-def initialize
-    super("Go")
-end
-
 protected
 
   def build
