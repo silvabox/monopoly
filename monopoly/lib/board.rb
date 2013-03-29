@@ -40,20 +40,30 @@ class Board
   end
 
   def property(name, purchase_value, rent_value, group_key)
-    group = @groups[group_key]
-    property = Property.new(name, purchase_value, rent_value, group)
-    add_tile(property)
-    property
+    add_land_and_rule Property.new(name, purchase_value, rent_value, @groups[group_key])
   end
 
   def station(name)
-    station = Station.new(name, @groups[:stations])
-    add_tile(station)
-    station
+    add_land_and_rule Station.new(name, stations)
   end
 
+  def land_rule(land)
+    rule = LandRule.new(property)
+    property.rule = rule
+  end
 
 private
+
+  def stations
+    @groups[:stations]
+  end
+
+  def add_land_and_rule(land)
+    rule = LandRule.new(land)
+    land.rule = rule
+    add_tile(land)
+    land
+  end
 
   def add_tile(tile)
     unless @tiles.empty?
