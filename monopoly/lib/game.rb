@@ -9,13 +9,29 @@ class Game
     player.initialize_balance(initial_balance)
     player.tile = @board.start_tile
     add_player player
-    player
   end
 
   def first_player
     @players.first
   end
 
+  def remove_player(player)
+    @players.delete player
+    @players.each do |p|
+      if p.next = player
+        p.next = player.next
+        break
+      end
+    end
+  end
+
+  def player_count
+    @players.count  
+  end
+
+  def players
+    @players
+  end
 
   private
 

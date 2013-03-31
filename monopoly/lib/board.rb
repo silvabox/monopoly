@@ -34,35 +34,39 @@ class Board
   end
 
   def tile(name)
+    add_tile Tile.new(name)
+  end
+
+  def penalty_tile(name, penalty)
     tile = Tile.new(name)
+    tile.rule = PenaltyRule.new(penalty, name)
     add_tile tile
-    tile
   end
 
   def property(name, purchase_value, rent_value, group_key)
-    add_land_and_rule Property.new(name, purchase_value, rent_value, @groups[group_key])
+    add_tile Property.new(name, purchase_value, rent_value, @groups[group_key])
   end
 
   def station(name)
-    add_land_and_rule Station.new(name, stations)
+    add_tile Station.new(name, stations)
   end
 
-  def land_rule(land)
-    rule = LandRule.new(property)
-    property.rule = rule
+  def community_chest
+    tile = Tile.new("Community Chest")
+    tile.rule = CommunityChest
+    add_tile tile
+  end
+
+  def chance
+    tile = Tile.new("Chance")
+    # tile.rule = Chance
+    add_tile tile
   end
 
 private
 
   def stations
     @groups[:stations]
-  end
-
-  def add_land_and_rule(land)
-    rule = LandRule.new(land)
-    land.rule = rule
-    add_tile(land)
-    land
   end
 
   def add_tile(tile)

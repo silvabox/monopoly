@@ -6,10 +6,10 @@ protected
     land_group :brown, "Brown"
 
     property "Old Kent Road", 60, 2, :brown
-    tile "Community Chest"
+    community_chest
     property "Whitechapel Road", 60, 4, :brown
 
-    tile "Income Tax"
+    penalty_tile "Income Tax", 200
     station "King's Cross Station"
 
     land_group :blue, "Blue"
@@ -35,7 +35,7 @@ protected
     land_group :orange, "Orange"
 
     property "Bow Street", 180, 14, :orange
-    tile "Community Chest"
+    community_chest
     property "Marlborough Street", 180, 14, :orange
     property "Vine Street", 200, 16, :orange
 
@@ -67,7 +67,7 @@ protected
 
     property "Regent Street", 300, 26, :green
     property "Oxford Street", 300, 26, :green
-    tile "Community Chest"
+    community_chest
     property "Bond Street", 320, 28, :green
 
     station "Liverpool Street Station"
@@ -76,7 +76,7 @@ protected
     land_group :purple, ""
 
     property "Park Lane", 350, 35, :purple
-    tile "Super Tax"
+    penalty_tile "Super Tax", 100
     property "Mayfair", 400, 50, :purple
   end
 end

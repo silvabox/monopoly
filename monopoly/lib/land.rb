@@ -4,6 +4,7 @@ class Land < Tile
 
   def initialize(name, purchase_value, rent_value, group)
     super(name)
+    @rule = LandRule.new(self)
     @buyable, @purchase_value = true, purchase_value
     @rent_value, @group = rent_value, group
     @group << self

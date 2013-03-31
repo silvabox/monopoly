@@ -41,11 +41,11 @@ class Player
   def pay_rent(land)
     rent = land.calculate_rent
     pay rent
-    land.owner.receive_funds rent
+    land.owner.receive rent
   end
 
-  def receive_funds(funds)
-    @balance += funds
+  def receive(amount)
+    @balance += amount
   end
 
   def pay(amount)
@@ -58,6 +58,16 @@ class Player
     places.times do
       @tile = @tile.next
       yield(@tile) if block_given?
+    end
+    @tile
+  end
+
+  def advance_until()
+    return unless block_given?
+
+    while true do
+      @tile = @tile.next
+      break if yield(@tile)
     end
     @tile
   end

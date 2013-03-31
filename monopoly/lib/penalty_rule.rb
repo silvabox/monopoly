@@ -1,18 +1,19 @@
 class PenaltyRule < Rule
 
-  def initialize(land)
-    @land = land
+  def initialize(penalty, description)
+    @penalty = penalty
+    @description = description
   end
 
-  def apply(player)
+  def apply(turn)
     begin
-          player.pay_rent @land
-        rescue
-          puts "#{player.name} is bankrupt!"
-          throw :winner, @land.owner
-        end
-        puts "#{player.name} pays #{@land.owner.name} #{@land.calculate_rent} for rent on #{@land.name}"
-      end
+      player = turn.player
+      player.pay @penalty
+      turn.log "#{player.name} pays #{@penalty} - #{@description}"
+      super
+    rescue RuntimeError
+      turn.log "#{player.name} is bankrupt!"
+      throw :bankrupt, player
     end
   end
 end

@@ -1,5 +1,7 @@
 require 'minitest/autorun'
 require './lib/tile.rb'
+require './lib/rule.rb'
+require './lib/land_rule.rb'
 require './lib/land_group.rb'
 require './lib/land.rb'
 require './lib/property.rb'

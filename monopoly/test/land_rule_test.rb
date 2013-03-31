@@ -54,12 +54,10 @@ class LandRuleTest < MiniTest::Unit::TestCase
     assert_equal 50, @land.owner.balance
   end
 
-  def test_player_loses_if_can_not_afford_rent
+  def test_player_bankrupt_if_can_not_afford_rent
     @player.initialize_balance 49
     @land.owner = Player.new("Player 2")
     rule = LandRule.new(@land)
-    assert_throws(:winner) do
-      rule.apply(@player)
-    end
+    assert_throws(:bankrupt) { rule.apply(@player) }
   end
 end
