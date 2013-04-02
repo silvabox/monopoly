@@ -31,6 +31,15 @@ class LandTest < MiniTest::Unit::TestCase
   	assert_equal true, @land.available?
   end
 
+  def test_owned_by_player
+    @land.owner = "Player"
+    assert_equal true, @land.owned_by?("Player")
+  end
+
+  def test_not_owned_by_player
+    assert_equal false, @land.owned_by?("Player")
+  end
+
   def test_calculate_rent_when_not_owned
     assert_equal 0, @land.calculate_rent
   end
