@@ -8,7 +8,7 @@ class Station < Land
   RENT_VALUE_FOUR_OWNED = 400
 
   def initialize(name, group)
-    super(name, 200, 50, group)
+    super(name, PURCHASE_VALUE, RENT_VALUE, group)
   end
 
   def calculate_rent

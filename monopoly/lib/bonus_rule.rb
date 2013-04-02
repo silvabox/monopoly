@@ -7,13 +7,8 @@ class BonusRule < Rule
 
   def apply(turn)
     player = turn.player
-    begin
-      player.receive @bonus
-      turn.log "#{player.name} receives #{@bonus} - #{@description}"
-      super
-    rescue RuntimeError
-      turn.log "#{player.name} is bankrupt!"
-      throw :bankrupt, player
-    end
+    player.receive @bonus
+    turn.log "#{player.name} receives #{@bonus} - #{@description}"
+    super
   end
 end

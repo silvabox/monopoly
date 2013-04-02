@@ -23,7 +23,6 @@ class Engine
 
         tile = player.tile
         puts "#{player.name} moves #{dice.total} to #{tile.name}; balance #{player.balance}"
-        puts "#{player.name} rolled a double" if dice.double?
         turn = Turn.new(player, game.players, dice)
 
         bankrupted_player = catch :bankrupt do

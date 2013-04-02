@@ -21,6 +21,5 @@ game = Game.new(LondonBoard.new)
 
 game.player "Ben", 1500
 game.player "Leo", 1500
-game.player "Barry", 1500
 
 Engine.run(game)
