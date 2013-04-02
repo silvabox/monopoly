@@ -4,7 +4,7 @@ class Board
   STATIONS_GROUP_NAME = "Stations"
 
   def start_tile
-    @tiles[0]
+    @tiles.first
   end
 
   def land_groups
@@ -18,9 +18,9 @@ class Board
     tile START_TILE_NAME
     @groups = {}
     land_group :stations, STATIONS_GROUP_NAME
-    self.build
+    build
   end
-  
+
 # this method is called in the constructor and overriden in sub classes to build the board
   def build
 
@@ -53,6 +53,8 @@ class Board
 
   def community_chest
     tile = Tile.new("Community Chest")
+    # Not sure what's going on here?
+    # I think you just hadn't got to here right?
     tile.rule = CommunityChest
     add_tile tile
   end
