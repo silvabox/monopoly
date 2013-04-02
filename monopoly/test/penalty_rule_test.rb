@@ -17,6 +17,7 @@ class PenaltyRuleTest < MiniTest::Unit::TestCase
 
   def test_player_bankrupt_if_can_not_afford_penalty
     rule = PenaltyRule.new(201, "Penalty 201")
-    assert_throws(:bankrupt) { rule.apply(Turn.new(@player)) }
+    rule.apply(Turn.new(@player))
+    assert_equal true, @player.bankrupt?
   end
 end

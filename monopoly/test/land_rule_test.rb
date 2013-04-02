@@ -56,6 +56,7 @@ class LandRuleTest < MiniTest::Unit::TestCase
     @player.instance_variable_set(:@balance, 49)
     @land.owner = Player.new("Player 2")
     rule = LandRule.new(@land)
-    assert_throws(:bankrupt) { rule.apply(@turn) }
+    rule.apply @turn
+    assert_equal true, @player.bankrupt?
   end
 end

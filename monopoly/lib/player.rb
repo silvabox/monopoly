@@ -2,10 +2,11 @@ class Player
   attr_reader :name, :balance, :land, :next
   attr_accessor :tile
 
-  def initialize(name, initial_balance = 0)
+  def initialize(name, balance = 0)
     @name = name
-    @balance = initial_balance
+    @balance = balance
     @land = []
+    @bankrupt = false
   end
 
   def next=(player)
@@ -25,29 +26,53 @@ class Player
   end
 
   def buy(land)
+    buy! land
+  rescue
+    false
+  end
+
+  def buy!(land)
     raise "This land cannot be bought" unless land.buyable?
     raise "This land is already owned" if land.owner
-    raise "Insufficient funds to buy land" unless can_afford? land.purchase_value
 
-    @balance -= land.purchase_value
+    pay! land.purchase_value
+
     land.owner = self
     @land << land
+    true
   end
 
   def pay_rent(land)
     rent = land.calculate_rent
-    pay rent
-    land.owner.receive rent
+    # owner should only receive what player can afford
+    land.owner.receive pay(rent)
   end
 
   def receive(amount)
     @balance += amount
   end
 
+# if the player cannot afford to pay the full amount
+# they become bankrupt and only pay what they have left
   def pay(amount)
+    if can_afford? amount
+      @balance -= amount
+    else
+      amount = balance
+      @balance = 0
+      @bankrupt = true
+    end 
+    amount
+  end
+
+  def pay!(amount)
     raise "Insufficient funds to pay amount" unless can_afford? amount
 
     @balance -= amount
+  end
+
+  def bankrupt?
+    @bankrupt
   end
 
   def advance(places)

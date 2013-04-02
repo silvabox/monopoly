@@ -2,10 +2,18 @@ require 'minitest/autorun'
 require './lib/rule'
 require './lib/penalty_rule'
 require './lib/bonus_rule'
+require './lib/land_rule'
 require './lib/turn'
 require './lib/card_draw'
 require './lib/community_chest'
 require './lib/player'
+require './lib/board'
+require './lib/tile'
+require './lib/land_group'
+require './lib/land'
+require './lib/station'
+require './lib/property'
+require './lib/london_board'
 
 class CommunityChestTest < MiniTest::Unit::TestCase
 
@@ -34,5 +42,12 @@ class CommunityChestTest < MiniTest::Unit::TestCase
     assert_equal 20, @player1.balance
     assert_equal 0, @player2.balance
     assert_equal 0, player3.balance
+  end
+
+  def test_card_3
+    board = LondonBoard.new
+    @player1.tile = board.start_tile
+    CommunityChest.cards[2].apply(@turn)
+    assert_equal "Trafalgar Square", @player1.tile.name
   end
 end

@@ -10,4 +10,16 @@ class CommunityChest < CardDraw
     end
     turn.log "it's your birthday, collect 10 from each player"
   end
+
+  card do |turn|
+    tile = turn.advance_to "Trafalgar Square", true
+    turn.log "Advance to Trafalgar Square"
+    tile.rule.apply(turn)
+  end
+
+  card do |turn|
+    tile = turn.advance_to "Mayfair", true
+    turn.log "Advance to Mayfair"
+    tile.rule.apply(turn)
+  end
 end
