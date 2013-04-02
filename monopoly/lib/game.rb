@@ -14,13 +14,13 @@ class Game
     @players.first
   end
 
+  # I'm not sure this was unit tested before
+  # you were doing assignment rather than compairson
   def remove_player(player)
     @players.delete player
-    @players.each do |p|
-      if p.next = player
-        p.next = player.next
-        break
-      end
+
+    if previous_player = find_previous_player(player)
+      previous_player.next = player.next
     end
   end
 
@@ -43,5 +43,9 @@ class Game
     end
     @players << player
     player
+  end
+
+  def find_previous_player(player)
+    @players.find { |p| p.next == player }
   end
 end
