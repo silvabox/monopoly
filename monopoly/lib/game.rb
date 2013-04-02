@@ -5,8 +5,7 @@ class Game
   end
 
   def player(name, initial_balance)
-    player = Player.new(name)
-    player.initialize_balance(initial_balance)
+    player = Player.new(name, initial_balance)
     player.tile = @board.start_tile
     add_player player
   end
@@ -26,7 +25,7 @@ class Game
   end
 
   def player_count
-    @players.count  
+    @players.count
   end
 
   def players
