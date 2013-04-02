@@ -73,7 +73,7 @@ protected
     station "Liverpool Street Station"
     tile "Chance"
 
-    land_group :purple, ""
+    land_group :purple, "Purple"
 
     property "Park Lane", 350, 35, :purple
     penalty_tile "Super Tax", 100

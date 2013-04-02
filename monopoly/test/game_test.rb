@@ -1,14 +1,14 @@
 require 'minitest/autorun'
-require './lib/tile.rb'
-require './lib/land_group.rb'
-require './lib/land.rb'
-require './lib/property.rb'
-require './lib/player.rb'
-require './lib/board.rb'
-require './lib/game.rb'
-require './lib/rule.rb'
-require './lib/land_rule.rb'
-require './test/test_board.rb'
+require './lib/tile'
+require './lib/land_group'
+require './lib/land'
+require './lib/property'
+require './lib/player'
+require './lib/board'
+require './lib/game'
+require './lib/rule'
+require './lib/land_rule'
+require './test/test_board'
 
 class GameTest < MiniTest::Unit::TestCase
 
@@ -39,7 +39,7 @@ class GameTest < MiniTest::Unit::TestCase
   def test_two_player_cycle
     players = add_players(2)
     assert_equal players[1], @game.first_player.next
-    assert_equal @game.first_player, players[1].next 
+    assert_equal @game.first_player, players[1].next
   end
 
 private

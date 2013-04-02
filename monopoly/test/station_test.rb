@@ -1,9 +1,10 @@
 require 'minitest/autorun'
-require './lib/tile.rb'
-require './lib/rule.rb'
-require './lib/land.rb'
-require './lib/land_group.rb'
-require './lib/station.rb'
+require './lib/tile'
+require './lib/rule'
+require './lib/land_rule'
+require './lib/land'
+require './lib/land_group'
+require './lib/station'
 
 
 class StationTest < MiniTest::Unit::TestCase
@@ -26,22 +27,22 @@ class StationTest < MiniTest::Unit::TestCase
   end
 
   def test_calculate_rent_one_station_owned
-    assert_equal Station::RENT_VALUE_ONE_OWNED, add_stations(1)[0].calculate_rent
+    assert_equal Station::RENT_VALUES[1], add_stations(1)[0].calculate_rent
   end
 
   def test_calculate_rent_two_stations_owned
     stations = add_stations(2)
-    assert_equal Station::RENT_VALUE_TWO_OWNED, stations[0].calculate_rent
+    assert_equal Station::RENT_VALUES[2], stations[0].calculate_rent
   end
 
   def test_calculate_rent_three_stations_owned
     stations = add_stations(3)
-    assert_equal Station::RENT_VALUE_THREE_OWNED, stations[0].calculate_rent
+    assert_equal Station::RENT_VALUES[3], stations[0].calculate_rent
   end
 
   def test_calculate_rent_four_stations_owned
     stations = add_stations(4)
-    assert_equal Station::RENT_VALUE_FOUR_OWNED, stations[0].calculate_rent
+    assert_equal Station::RENT_VALUES[4], stations[0].calculate_rent
   end
 
   private
@@ -50,7 +51,7 @@ class StationTest < MiniTest::Unit::TestCase
     stations = []
     4.times do |i|
       station = new_station(i + 1)
-      station.owner = "Owner" if no_of_owned > i 
+      station.owner = "Owner" if no_of_owned > i
       stations << station
     end
     stations

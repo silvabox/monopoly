@@ -5,8 +5,7 @@ class Game
   end
 
   def player(name, initial_balance)
-    player = Player.new(name)
-    player.initialize_balance(initial_balance)
+    player = Player.new(name, initial_balance)
     player.tile = @board.start_tile
     add_player player
   end
@@ -15,18 +14,18 @@ class Game
     @players.first
   end
 
+  # I'm not sure this was unit tested before
+  # you were doing assignment rather than compairson
   def remove_player(player)
     @players.delete player
-    @players.each do |p|
-      if p.next = player
-        p.next = player.next
-        break
-      end
+
+    if previous_player = find_previous_player(player)
+      previous_player.next = player.next
     end
   end
 
   def player_count
-    @players.count  
+    @players.count
   end
 
   def players
@@ -44,5 +43,9 @@ class Game
     end
     @players << player
     player
+  end
+
+  def find_previous_player(player)
+    @players.find { |p| p.next == player }
   end
 end

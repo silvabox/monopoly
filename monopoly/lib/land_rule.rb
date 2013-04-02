@@ -11,7 +11,7 @@ class LandRule < Rule
         player.buy @land if player.can_afford?(@land.purchase_value)
         turn.log "#{player.name} buys #{@land.name}; new balance #{player.balance}"
       else
-        if @land.owner == player
+        if @land.owned_by?(player)
           turn.log "#{player.name} owns #{@land.name}"
         else
           player.pay_rent @land

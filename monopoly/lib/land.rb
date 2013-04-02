@@ -18,6 +18,10 @@ class Land < Tile
     !@owner
   end
 
+  def owned_by?(player)
+    @owner == player
+  end
+
   def to_s
     "Land #{@name}"
   end

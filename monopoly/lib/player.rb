@@ -2,18 +2,14 @@ class Player
   attr_reader :name, :balance, :land, :next
   attr_accessor :tile
 
-  def initialize(name)
+  def initialize(name, initial_balance = 0)
     @name = name
-    @balance = 0
+    @balance = initial_balance
     @land = []
   end
 
   def next=(player)
     @next = player
-  end
-
-  def initialize_balance(balance)
-    @balance = balance
   end
 
   def owns_complete_group?(land)
