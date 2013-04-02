@@ -1,9 +1,9 @@
 require 'minitest/autorun'
-require './lib/tile.rb'
-require './lib/land.rb'
-require './lib/land_group.rb'
-require './lib/rule.rb'
-require './lib/land_rule.rb'
+require './lib/tile'
+require './lib/land'
+require './lib/land_group'
+require './lib/rule'
+require './lib/land_rule'
 
 class LandTest < MiniTest::Unit::TestCase
   def setup

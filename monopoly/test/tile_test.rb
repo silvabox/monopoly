@@ -1,6 +1,6 @@
 require 'minitest/autorun'
-require './lib/tile.rb'
-require './lib/rule.rb'
+require './lib/tile'
+require './lib/rule'
 
 class TileTest < MiniTest::Unit::TestCase
   def test_not_buyable_when_initialized

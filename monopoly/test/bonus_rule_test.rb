@@ -1,8 +1,8 @@
 require 'minitest/autorun'
-require './lib/rule.rb'
-require './lib/player.rb'
-require './lib/turn.rb'
-require './lib/bonus_rule.rb'
+require './lib/rule'
+require './lib/player'
+require './lib/turn'
+require './lib/bonus_rule'
 
 class BonusRuleTest < MiniTest::Unit::TestCase
   def setup

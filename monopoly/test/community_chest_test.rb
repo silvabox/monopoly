@@ -1,11 +1,11 @@
 require 'minitest/autorun'
-require './lib/rule.rb'
-require './lib/penalty_rule.rb'
-require './lib/bonus_rule.rb'
-require './lib/turn.rb'
-require './lib/card_draw.rb'
-require './lib/community_chest.rb'
-require './lib/player.rb'
+require './lib/rule'
+require './lib/penalty_rule'
+require './lib/bonus_rule'
+require './lib/turn'
+require './lib/card_draw'
+require './lib/community_chest'
+require './lib/player'
 
 class CommunityChestTest < MiniTest::Unit::TestCase
 
