@@ -22,14 +22,18 @@ class Engine
         end
 
         tile = player.tile
-        puts "#{player.name} moves #{dice.total} to #{tile.name}"
-
+        puts "#{player.name} moves #{dice.total} to #{tile.name}; balance #{player.balance}"
+        puts "#{player.name} rolled a double" if dice.double?
         turn = Turn.new(player, game.players, dice)
 
         bankrupted_player = catch :bankrupt do
           tile.rule.apply(turn)
           
-          player = player.next
+          if dice.double?
+            puts "#{player.name} rolled a double"
+          else
+            player = player.next
+          end
           nil
         end
         game.remove_player bankrupted_player if bankrupted_player
