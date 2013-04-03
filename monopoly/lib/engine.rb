@@ -16,7 +16,7 @@ class Engine
         tile = player.tile
         puts "#{player.name} moves #{dice.total} to #{tile.name}; balance #{player.balance}"
 
-        tile.rule.apply(turn)
+        tile.rule.apply turn
       end
 
       if player.bankrupt?

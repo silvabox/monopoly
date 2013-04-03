@@ -15,7 +15,7 @@ class Land < Tile
   end
 
   def available?
-    !@owner
+    @owner.nil?
   end
 
   def owned_by?(player)

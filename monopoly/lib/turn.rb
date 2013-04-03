@@ -16,7 +16,7 @@ class Turn
   def pass_go(tile)
     if tile.name == Board::START_TILE_NAME
       @player.receive 200
-      puts "#{@player.name} passes Go and receives 200"
+      log "#{@player.name} passes Go and receives 200"
     end
   end
   private :pass_go

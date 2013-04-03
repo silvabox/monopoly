@@ -15,7 +15,7 @@ class Station < Land
 
   def calculate_rent
     if @owner
-      RENT_VALUES[@group.land_owned_by(@owner).count] || super
+      RENT_VALUES[@group.land_owned_by(@owner).count]
     else
       super
     end

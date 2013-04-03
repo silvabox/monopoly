@@ -14,8 +14,6 @@ class Game
     @players.first
   end
 
-  # I'm not sure this was unit tested before
-  # you were doing assignment rather than compairson
   def remove_player(player)
     @players.delete player
 
